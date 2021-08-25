@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    Hello medium clone
+    <mcv-topbar/>
     <router-view />
-    <router-link to="/register">register</router-link>
   </div>
 </template>
 
 <script>
-export default {}
+import McvTopbar from '@/components/Topbar'
+import {actionTypes} from '@/store/modules/auth'
+export default {
+  name: 'McvApp',
+  components: {
+    McvTopbar
+  },
+  mounted() {
+    this.$store.dispatch(actionTypes.getCurrentUser)
+  }
+}
 </script>
